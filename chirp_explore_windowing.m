@@ -2,6 +2,7 @@
 % Why Chirp waveform has ripples in frequency domain?
 % Is there such setting that DFT does not produce ripples?
 % plotting exported as chirp_plot.m
+
 M = 100;
 n = -M : M-1;
 T = 0.1;
@@ -14,6 +15,7 @@ SChirp = fft(sChirp);
 f = (0:2*M-1)/(T*2*M);
 
 plot_complex(f, SChirp, 'freq')
+
 %% frequenvy shifted chirp
 shift = 2;
 sChirpShift = exp(1j*pi*gamma*t.^2).*exp(1j*pi*shift*t);
@@ -46,7 +48,7 @@ plot_complex(t, sChirpW, 'time')
 SChirpW = fft(sChirpW);
 plot_complex(f, SChirpW, 'freq')
 
-%% windowed chirp full simetry
+%% windowed chirp full symmetry
 n = -M : M;
 t = n*T;
 sChirp = exp(1j*pi*gamma*t.^2);
@@ -56,6 +58,7 @@ f = (0:4*M-1)/(T*4*M);
 plot_complex(t, sChirpW, 'time')
 SChirpW = fft(sChirpW);
 plot_complex(f, SChirpW, 'freq')
+
 %% Conclusion
 % Chirp contain continuous transition between frequencies so it acts like
 % windowed signal with spectral leakage.
